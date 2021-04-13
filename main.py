@@ -4,7 +4,7 @@ from constants import item
 geracoes = []
 
 # Quantidade maxima de gerações
-t=100
+t=10
 
 # Gera população inicial randomicamente, adiciona a lista de gerações e avalia
 populacao_inicial = Populacao()

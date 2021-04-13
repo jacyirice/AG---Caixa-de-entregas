@@ -9,7 +9,7 @@ class Populacao:
     aptidao_total = 0
     selecionados = None
 
-    def __init__(self, populacao=[], tam=100):
+    def __init__(self, populacao=[], tam=1000):
         '''Inicializa população com cromossomos randomicos ou com uma especificada'''
         if not populacao:
             self.populacao = [Cromossomo() for _ in range(tam)]
