@@ -11,24 +11,24 @@ populacao_inicial = Populacao()
 populacao_inicial.aptidao()
 geracoes.append(populacao_inicial)
 
-print('\nPopulacao inicial\n',populacao_inicial)
+# print('\nPopulacao inicial\n',populacao_inicial)
 
 for i in range(1,t,1):
     print('\nAptidao\n', geracoes[i-1])
     
     geracoes[i-1].selecionar()
-    print('\nSelecionados\n',geracoes[i-1].selecionados)
+    # print('\nSelecionados\n',geracoes[i-1].selecionados)
     
     print(f'\nGeração {i}\n')
     
     geracoes.append(Populacao())
-    print('\nNovaPopulação\n',geracoes[i])
+    # print('\nNovaPopulação\n',geracoes[i])
     
     geracoes[i].cruzar(geracoes[i-1])
-    print('\nCruzamento\n', geracoes[i])
+    # print('\nCruzamento\n', geracoes[i])
     
     geracoes[i].mutacao()
-    print('\nMutação\n', geracoes[i])
+    # print('\nMutação\n', geracoes[i])
     
     geracoes[i].aptidao()
 

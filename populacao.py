@@ -23,6 +23,9 @@ class Populacao:
         for i in self.populacao:
             i.avaliar()
             self.aptidao_total += i.aptidao
+
+        for i in self.populacao:
+            i.aptidao_r = round(i.aptidao/self.aptidao_total,9)
         self.populacao = sorted(self.populacao, key=lambda x: x.aptidao)
 
 
@@ -30,9 +33,6 @@ class Populacao:
         '''
         Calcula a aptidao relativa e seleciona por meio do metodo da roleta
         '''
-        for i in self.populacao:
-            i.aptidao_r = round(i.aptidao/self.aptidao_total,2)
-
         aptidao_r_lista = [i.aptidao_r for i in self.populacao]
         k = int(len(self.populacao)/2)
         self.selecionados = Populacao(random.choices(self.populacao, aptidao_r_lista, k = k))
