@@ -9,7 +9,7 @@ class Populacao:
     aptidao_total = 0
     selecionados = None
 
-    def __init__(self, populacao=[], tam=1000):
+    def __init__(self, populacao=[], tam=10):
         '''Inicializa população com cromossomos randomicos ou com uma especificada'''
         if not populacao:
             self.populacao = [Cromossomo() for _ in range(tam)]
@@ -21,7 +21,7 @@ class Populacao:
         Avalia os cromossomos da população e ordena a lista
         '''
         for i in self.populacao:
-            i.avaliar()
+            i.set_aptidao()
             self.aptidao_total += i.aptidao
 
         for i in self.populacao:
@@ -31,7 +31,7 @@ class Populacao:
 
     def selecionar(self):
         '''
-        Calcula a aptidao relativa e seleciona por meio do metodo da roleta
+        Seleciona cromossomos por meio do metodo da roleta
         '''
         aptidao_r_lista = [i.aptidao_r for i in self.populacao]
         k = int(len(self.populacao)/2)
@@ -50,7 +50,8 @@ class Populacao:
 
     def cruzar(self, pop_anterior):
         '''
-        Cruza os elementos selecinados com os de outra população randomicamente
+        Cruza os elementos selecinados da população passada como argumento
+        com os da população randomicamente
         '''
         novaPop = []
         for i in pop_anterior.selecionados.populacao:

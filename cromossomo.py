@@ -17,7 +17,7 @@ class Cromossomo:
         else:
             self.cromossomo = ''.join(random.choice(char) for _ in range(size))
 
-    def avaliar(self):
+    def set_aptidao(self):
         '''
         Calcula a aptidao do cromossomo por meio do bonus e verifica
         se o grau de dificuldade do cromossomo está dentro dos requisitos,
@@ -39,9 +39,8 @@ class Cromossomo:
         '''
         Realiza a mutação aleatoria do cromossomo
         '''
-        cromossomo = self.cromossomo
         pos = random.randint(0, 7)
-        lista = list(cromossomo)
+        lista = list(self.cromossomo)
         if (lista[pos] == '1'):
             lista[pos] = '0'
         else:
