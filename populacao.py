@@ -48,16 +48,24 @@ class Populacao:
 
         return [Cromossomo(novoCromossomoA), Cromossomo(novoCromossomoB)]
 
-    def cruzar(self, pop_anterior):
+    def cruzar(self):
         '''
-        Cruza os elementos selecinados da população passada como argumento
-        com os da população randomicamente
+        Cruza os elementos selecinados da população com os outros selecionados
+        exceto ele mesmo utilizando Ponto Duplo
         '''
         novaPop = []
-        for i in pop_anterior.selecionados.populacao:
-            pos = random.randint(0,len(self.populacao)-1)
-            novaPop.extend(self.cruzaDois(i,self.populacao[pos]))
-        self.populacao = novaPop
+        selecionados = self.selecionados.populacao
+        quant_s = len(selecionados)
+
+        for i in range(quant_s):
+            pos = random.randint(0,quant_s-1)
+            if i == pos:
+                pos += 1
+            if pos == quant_s:
+                pos = -1
+            novaPop.extend(self.cruzaDois(selecionados[i],selecionados[pos]))
+        
+        return Populacao(novaPop)
 
     def mutacao(self):
         '''

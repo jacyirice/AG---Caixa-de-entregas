@@ -17,11 +17,10 @@ print('\nPopulacao inicial\n')
 for i in range(1,t,1):
     print('\n', geracoes[i-1])
     geracoes[i-1].selecionar()
+
     print(f'\nGeração {i}\n')
     
-    geracoes.append(Populacao())
-    
-    geracoes[i].cruzar(geracoes[i-1])
+    geracoes.append(geracoes[i-1].cruzar())
     
     geracoes[i].mutacao()
     
@@ -32,6 +31,8 @@ melhorCromossomo = geracoes[-1].populacao[-1].cromossomo
 print('\nMelhor cromossomo:', melhorCromossomo)
 
 print('\nItens da mochila:')
+itensMochila = ''
 for i, j in enumerate(melhorCromossomo):
     if j == '1':
-        print('\t',item[i])
+        itensMochila += item[i] + ' + '
+print(itensMochila[:-3]+'.')
