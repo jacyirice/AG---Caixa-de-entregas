@@ -62,7 +62,7 @@ class Populacao:
             if i == pos:
                 pos += 1
             if pos == quant_s:
-                pos = -1
+                pos = 0
             novaPop.extend(self.cruzaDois(selecionados[i],selecionados[pos]))
         
         return Populacao(novaPop)
